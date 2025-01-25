@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package clock;
+
+service ClockService {
+  // Server streaming RPC to send IST time updates
+  rpc GetTimeStream (TimeRequest) returns (stream TimeResponse);
+}
+
+message TimeRequest {
+  string timezone = 1;
+}
+
+message TimeResponse {
+  string currentTime = 1;
+}
